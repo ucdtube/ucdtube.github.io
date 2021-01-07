@@ -76,7 +76,7 @@ function setHTML(){
 }
 
 function setHTML2(){
-  var node = document.createTextNode("Time Skipped:" + totalSeconds );
+  var node = document.createTextNode("Score:" + totalSeconds );
   para.appendChild(node);
 
   main.appendChild(para);
@@ -102,7 +102,7 @@ function skip() {
 
 function restart() {
 
-      video.currentTime = 350;
+      video.currentTime = 340;
       console.log(totalSeconds);
   }
 
