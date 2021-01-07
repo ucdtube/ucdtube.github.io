@@ -1,23 +1,42 @@
 <html>
-  <body>
-    <div id="main" style="text-align:center">
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div id="main" style="text-align:center">
+
+
         <br></br>
-        <button onclick="c1();">[ Category1 ]</button>
-        <button onclick="c2();">[ Category2 ]</button>
-        <button onclick="c3();">[ Category3 ]</button>
-      </div>
-  </body>
+
+        <button id="button" onclick="c1();">[ Category1 ]</button>
+        <button id="button" onclick="c2();">[ Category2 ]</button>
+        <button id="button" onclick="c3();">[ Category3 ]</button>
+
+
+ </div>
+</body>
   <script>
 
-
+var video = document.createElement("video");
+var main = document.getElementById('main');
+var br = document.createElement("br");
+var buttonPlay = document.createElement("button");
+var buttonSkip = document.createElement("button");
+var buttonRestart = document.createElement("button");
+var opacity = 0;
+var intervalID;
+var totalSeconds = 0;
+var para = document.createElement("p");
 
 
 function c1() {
     setHTML();
+    video.setAttribute("src","http://vjs.zencdn.net/v/oceans.mp4");
   }
 
 function c2() {
     setHTML();
+    video.setAttribute("src","http://vjs.zencdn.net/v/oceans.mp4");
     }
 
 function c3() {
@@ -25,8 +44,78 @@ function c3() {
       }
 
 function setHTML(){
-    document.getElementById('main').innerHTML = "";
+    main.innerHTML = "";
+    video.setAttribute("width","1280");
+    video.setAttribute("height","720");
+    video.setAttribute("id","video");
+    video.setAttribute("type","video/mp4");
+    buttonPlay.setAttribute("onclick", "playPause();");
+    buttonPlay.setAttribute("id", "commands");
+    buttonPlay.innerHTML = "[ Play ]";
+    buttonSkip.setAttribute("onclick", "skip();");
+    buttonSkip.innerHTML = "[ Skip Advert ]";
+    buttonSkip.setAttribute("id", "commands");
+    buttonSkip.setAttribute("class", "skip");
+    buttonRestart.setAttribute("onclick", "restart();");
+    buttonRestart.innerHTML = "[ Restart ]";
+    buttonRestart.setAttribute("id", "commands");
+    main.appendChild(br);
+    main.appendChild(video);
+    main.appendChild(br);
+    main.appendChild(buttonPlay);
+
+    main.appendChild(buttonRestart);
+
+    main.appendChild(buttonSkip);
+
+    buttonSkip.style.display = "none";
+
+
+
 
 }
+
+function setHTML2(){
+  var node = document.createTextNode("Time Skipped:" + totalSeconds );
+  para.appendChild(node);
+
+  main.appendChild(para);
+
+
+}
+
+function playPause() {
+  buttonSkip.style.display = "block";
+  intervalID = setInterval(setTime, 1000);
+  if (video.paused)
+      video.play();
+  else
+    video.pause();
+}
+
+function skip() {
+      buttonSkip.parentNode.removeChild(buttonSkip);
+      clearInterval(intervalID);
+      video.currentTime =  25;
+      console.log("skipped");
+}
+
+function restart() {
+
+      video.currentTime = 0;
+      console.log(totalSeconds);
+  }
+
+  video.onended = function(e) {
+    main.innerHTML = "";
+    setHTML2();
+
+  };
+
+  function setTime() {
+    ++totalSeconds;
+
+  }
+
   </script>
 </html>
