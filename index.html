@@ -20,7 +20,6 @@
 var video = document.createElement("video");
 var main = document.getElementById('main');
 var br = document.createElement("br");
-var buttonPlay = document.createElement("button");
 var buttonSkip = document.createElement("button");
 var buttonRestart = document.createElement("button");
 var opacity = 0;
@@ -49,26 +48,28 @@ function setHTML(){
     video.setAttribute("height","720");
     video.setAttribute("id","video");
     video.setAttribute("type","video/mp4");
-    buttonPlay.setAttribute("onclick", "playPause();");
-    buttonPlay.setAttribute("id", "commands");
-    buttonPlay.innerHTML = "[ Play ]";
     buttonSkip.setAttribute("onclick", "skip();");
     buttonSkip.innerHTML = "[ Skip Advert ]";
-    buttonSkip.setAttribute("id", "commands");
+    buttonSkip.setAttribute("id", "commands-skip");
     buttonSkip.setAttribute("class", "skip");
     buttonRestart.setAttribute("onclick", "restart();");
-    buttonRestart.innerHTML = "[ Restart ]";
+    buttonRestart.innerHTML = "[ DEBUG - GOTO END ]";
     buttonRestart.setAttribute("id", "commands");
     main.appendChild(br);
     main.appendChild(video);
     main.appendChild(br);
-    main.appendChild(buttonPlay);
 
     main.appendChild(buttonRestart);
 
     main.appendChild(buttonSkip);
 
+    video.autoplay = true;
+
+
     buttonSkip.style.display = "none";
+
+    buttonSkip.style.display = "block";
+    intervalID = setInterval(setTime, 1000);
 
 
 
@@ -76,22 +77,16 @@ function setHTML(){
 }
 
 function setHTML2(){
-  var node = document.createTextNode("Score:" + totalSeconds );
+  var node = document.createTextNode("Score:  " + totalSeconds + "\u000a\u000a\u000a");
+  var node2 = document.createTextNode("Please take a note of your score displayed above and return to the qualtrics window");
   para.appendChild(node);
-
+  para.appendChild(node2)
   main.appendChild(para);
 
 
 }
 
-function playPause() {
-  buttonSkip.style.display = "block";
-  intervalID = setInterval(setTime, 1000);
-  if (video.paused)
-      video.play();
-  else
-    video.pause();
-}
+
 
 function skip() {
       buttonSkip.parentNode.removeChild(buttonSkip);
