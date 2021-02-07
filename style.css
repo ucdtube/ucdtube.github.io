@@ -37,7 +37,7 @@ html{
   color: white;
   background-color: black;
   float: right;
-
+  margin-right:70px;
 
 
 }
@@ -71,7 +71,10 @@ p{
   color: white;
   white-space: pre;
 
+
 }
+
+
 
 @keyframes flickerAnimation {
   0%   { opacity:1; }
@@ -94,8 +97,8 @@ p{
   100% { opacity:1; }
 }
 .skip {
-   -webkit-animation: flickerAnimation 2s infinite;
-   -moz-animation: flickerAnimation 2s infinite;
-   -o-animation: flickerAnimation 2s infinite;
-    animation: flickerAnimation 2s infinite;
+   -webkit-animation: flickerAnimation 1s infinite;
+   -moz-animation: flickerAnimation 1s infinite;
+   -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite;
 }

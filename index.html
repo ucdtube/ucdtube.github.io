@@ -8,9 +8,9 @@
 
         <br></br>
 
-        <button id="button" onclick="c1();">[ Category1 ]</button>
-        <button id="button" onclick="c2();">[ Category2 ]</button>
-        <button id="button" onclick="c3();">[ Category3 ]</button>
+        <button id="button" onclick="c1();">[ Visual Movement ]</button>
+        <button id="button" onclick="c2();">[ Geometrics ]</button>
+        <button id="button" onclick="c3();">[ Animation ]</button>
 
 
  </div>
@@ -24,9 +24,10 @@ var buttonSkip = document.createElement("button");
 var buttonRestart = document.createElement("button");
 var opacity = 0;
 var intervalID;
+var skipID;
 var totalSeconds = 0;
 var para = document.createElement("p");
-var skipNumber = 0;
+var skipNumber = 5;
 
 
 function c1() {
@@ -44,13 +45,16 @@ function c3() {
       }
 
 function setHTML(){
+    var skipNumberNode = document.createTextNode(skipNumber);
     main.innerHTML = "";
     video.setAttribute("width","1280");
     video.setAttribute("height","720");
     video.setAttribute("id","video");
     video.setAttribute("type","video/mp4");
     buttonSkip.setAttribute("onclick", "skip();");
-    buttonSkip.innerHTML = "skipNumber";
+    buttonSkip.setAttribute("id", "skipButtonID");
+    buttonSkip.innerHTML = "";
+    buttonSkip.appendChild(skipNumberNode);
     buttonSkip.setAttribute("id", "commands-skip");
     buttonSkip.setAttribute("class", "skip");
     buttonRestart.setAttribute("onclick", "restart();");
@@ -70,7 +74,14 @@ function setHTML(){
     buttonSkip.style.display = "none";
 
     buttonSkip.style.display = "block";
+    buttonSkip.disabled = true;
     intervalID = setInterval(setTime, 1000);
+
+
+
+    skipID = setInterval(skipTime, 1000);
+
+
 
 
 
@@ -110,6 +121,23 @@ function restart() {
 
   function setTime() {
     ++totalSeconds;
+
+  }
+
+  function skipTime(){
+
+    --skipNumber;
+    skipNumberNode = document.createTextNode(skipNumber);
+    buttonSkip.innerHTML = "";
+    if(skipNumber == 0){
+      skipNumberNode = document.createTextNode("[ Skip ]");
+      buttonSkip.appendChild(skipNumberNode);
+      buttonSkip.disabled = false;
+      clearInterval(skipID);
+    }else{
+      buttonSkip.appendChild(skipNumberNode);
+   }
+
 
   }
 
