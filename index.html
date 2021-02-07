@@ -26,6 +26,7 @@ var opacity = 0;
 var intervalID;
 var totalSeconds = 0;
 var para = document.createElement("p");
+var skipNumber = 0;
 
 
 function c1() {
@@ -49,7 +50,7 @@ function setHTML(){
     video.setAttribute("id","video");
     video.setAttribute("type","video/mp4");
     buttonSkip.setAttribute("onclick", "skip();");
-    buttonSkip.innerHTML = "[ Skip Advert ]";
+    buttonSkip.innerHTML = "skipNumber";
     buttonSkip.setAttribute("id", "commands-skip");
     buttonSkip.setAttribute("class", "skip");
     buttonRestart.setAttribute("onclick", "restart();");
@@ -77,8 +78,8 @@ function setHTML(){
 }
 
 function setHTML2(){
-  var node = document.createTextNode("Score:  " + totalSeconds + "\u000a\u000a\u000a");
-  var node2 = document.createTextNode("Please take a note of your score displayed above and return to the qualtrics window");
+  var node = document.createTextNode("Number:  " + totalSeconds + "\u000a\u000a\u000a");
+  var node2 = document.createTextNode("Please take a note of your number displayed above and return to the qualtrics window");
   para.appendChild(node);
   para.appendChild(node2)
   main.appendChild(para);
