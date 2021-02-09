@@ -5,7 +5,7 @@
 <body>
  <div id="main" style="text-align:center">
 
-   <a href="index2.html"> test </a>      <br></br>
+       <br></br>
 
         <button id="button" onclick="c1();">[ Visual Movement ]</button>
         <button id="button" onclick="c2();">[ Geometrics ]</button>
@@ -20,7 +20,7 @@ var video = document.createElement("video");
 var main = document.getElementById('main');
 var br = document.createElement("br");
 var buttonSkip = document.createElement("button");
-var buttonRestart = document.createElement("button");
+//var buttonRestart = document.createElement("button");
 var opacity = 0;
 var intervalID;
 var skipID;
@@ -31,16 +31,17 @@ var skipNumber = 5;
 
 function c1() {
     setHTML();
-    video.setAttribute("src","video1.MP4");
+    video.setAttribute("src","video1.mp4");
   }
 
 function c2() {
     setHTML();
-    video.setAttribute("src","video1.MP4");
+    video.setAttribute("src","video1.mp4");
     }
 
 function c3() {
     setHTML();
+    video.setAttribute("src","video1.mp4");
       }
 
 function setHTML(){
@@ -49,6 +50,7 @@ function setHTML(){
     video.setAttribute("width","1280");
     video.setAttribute("height","720");
     video.setAttribute("id","video");
+    //video.setAttribute("allowFullscreen");
     video.setAttribute("type","video/mp4");
     buttonSkip.setAttribute("onclick", "skip();");
     buttonSkip.setAttribute("id", "skipButtonID");
@@ -56,18 +58,19 @@ function setHTML(){
     buttonSkip.appendChild(skipNumberNode);
     buttonSkip.setAttribute("id", "commands-skip");
     buttonSkip.setAttribute("class", "skip");
-    buttonRestart.setAttribute("onclick", "restart();");
-    buttonRestart.innerHTML = "[ DEBUG - GOTO END ]";
-    buttonRestart.setAttribute("id", "commands");
+    //buttonRestart.setAttribute("onclick", "restart();");
+    //buttonRestart.innerHTML = "[  - GOTO END ]";
+    //buttonRestart.setAttribute("id", "commands");
     main.appendChild(br);
     main.appendChild(video);
     main.appendChild(br);
 
-    main.appendChild(buttonRestart);
+    //main.appendChild(buttonRestart);
 
     main.appendChild(buttonSkip);
 
     video.autoplay = true;
+    //video.allowFullscreen = true;
 
 
     buttonSkip.style.display = "none";
