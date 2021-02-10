@@ -31,17 +31,17 @@ var skipNumber = 5;
 
 function c1() {
     setHTML();
-    video.setAttribute("src","video1.mp4");
+    video.setAttribute("src","v1.mp4");
   }
 
 function c2() {
     setHTML();
-    video.setAttribute("src","video1.mp4");
+    video.setAttribute("src","v1.mp4");
     }
 
 function c3() {
     setHTML();
-    video.setAttribute("src","video1.mp4");
+    video.setAttribute("src","v1.mp4");
       }
 
 function setHTML(){
@@ -92,7 +92,7 @@ function setHTML(){
 
 function setHTML2(){
   var node = document.createTextNode("Number:  " + totalSeconds + "\u000a\u000a\u000a");
-  var node2 = document.createTextNode("Please take a note of your number displayed above and return to the qualtrics window");
+  var node2 = document.createTextNode("Please take a note of your number displayed above. You Can now exit full screen mode and return to the qualtrics window");
   para.appendChild(node);
   para.appendChild(node2)
   main.appendChild(para);
